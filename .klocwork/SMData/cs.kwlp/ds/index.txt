@@ -1,0 +1,10 @@
+C:\Jiya -HP\Dot Net\SMData\SMData\ViewModel\MainWindowViewModel.cs;C:\Jiya -HP\Dot Net\SMData\SMData\.klocwork\SMData\cs.kwlp\ds\8\mryirnzk.1zw;8;0;False;96D4BA221BC8A374933472F183E895594FE0C492;False
+C:\Jiya -HP\Dot Net\SMData\SMData\App.xaml.cs;C:\Jiya -HP\Dot Net\SMData\SMData\.klocwork\SMData\cs.kwlp\ds\9\d40rhqao.1c3;9;0;False;C844D36D52AFDA681BA7A098FCEF20AC023DE08D;False
+C:\Jiya -HP\Dot Net\SMData\SMData\DataReader\DataReader.cs;C:\Jiya -HP\Dot Net\SMData\SMData\.klocwork\SMData\cs.kwlp\ds\0\pbfeyjwd.wyd;10;0;False;B16E49A11DFD3931E806B8414F9DF57C80E0F52C;False
+C:\Jiya -HP\Dot Net\SMData\SMData\DataReader\DataReaderExtension.cs;C:\Jiya -HP\Dot Net\SMData\SMData\.klocwork\SMData\cs.kwlp\ds\1\dgw2mdsj.krf;11;0;False;D59B4B0B2FD500472C8264A47F290A3C4AAF1675;False
+C:\Jiya -HP\Dot Net\SMData\SMData\MainWindow.xaml.cs;C:\Jiya -HP\Dot Net\SMData\SMData\.klocwork\SMData\cs.kwlp\ds\2\qvzrzvik.dsm;12;0;False;5226AEFD4CFD3D7B35EFE0F5C885AE52F06983F9;False
+C:\Jiya -HP\Dot Net\SMData\SMData\Converter\PreviousHighConverter.cs;C:\Jiya -HP\Dot Net\SMData\SMData\.klocwork\SMData\cs.kwlp\ds\6\10a1hh5i.1dj;16;0;False;00E80FAE237CF67B70A689D6F76724BF77CA1EF4;False
+C:\Jiya -HP\Dot Net\SMData\SMData\Properties\AssemblyInfo.cs;;17;0;False;BEF89438EFBF26E1875CC250BC895847678A0C6F;False
+C:\Jiya -HP\Dot Net\SMData\SMData\Properties\Resources.Designer.cs;;18;0;False;4CB082C59346D1348E94D4EA786321FF61E2FEC3;False
+C:\Jiya -HP\Dot Net\SMData\SMData\Properties\Settings.Designer.cs;;19;0;False;F662193784C232DBA2CF89FF61237257E679DC72;False
+C:\Jiya -HP\Dot Net\SMData\SMData\Views\BelowHundered.xaml.cs;;20;0;False;669B7848B14DD24DE463F59DCA12BD3FF821361C;False

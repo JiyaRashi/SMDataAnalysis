@@ -1,0 +1,137 @@
+﻿<UserControl x:Class="ShareMarketData.Views.BelowHundered"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ShareMarketData.Views"
+             mc:Ignorable="d" 
+             xmlns:con="clr-namespace:ShareMarketData.Converter" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style x:Key="textblockStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Foreground" Value="Blue"/>
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+        <Style x:Key="textblockStyle_" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontSize" Value="17" />
+            <Setter Property="Foreground" Value="Red"/>
+        </Style>
+        <Style x:Key="buttonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="LightBlue" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+
+        <con:PreviousHighConverter x:Key="PreviousHighConverter"/>
+        <!--<DataTemplate x:Key="DataTemplateMatch">
+            <Button Margin="5" 
+                            Command="{Binding DataContext.MatchScoreDelegateCommand,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type ListBox}}}"
+                            CommandParameter="{Binding IPLSchedule}"
+                           Style="{StaticResource buttonStyle}" HorizontalContentAlignment="Center" HorizontalAlignment="Center">
+                <Button.Content>
+                    <StackPanel Width="350" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        -->
+        <!--<TextBlock Style="{StaticResource textblockStyle}" HorizontalAlignment="Center" Text="{Binding Date}" />-->
+        <!--
+                        <TextBlock Style="{StaticResource textblockStyle}" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding Match}" />
+                        <TextBlock Style="{StaticResource textblockStyle}" HorizontalAlignment="Center" Text="{Binding Time}" />
+                        <TextBlock Style="{StaticResource textblockStyle}" HorizontalAlignment="Center" Text="{Binding Venue}" />
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </DataTemplate>-->
+    </UserControl.Resources>
+    <Grid>
+        <ListBox x:Name="listHunderedPrice" Grid.Row="1"  ItemsSource="{Binding UsersCq}" Background="WhiteSmoke">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="6" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+
+                    <Border BorderThickness="3">
+                        <Grid Margin="0,10,0,10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock   HorizontalAlignment="Center" Text="{Binding TckrSymb}"   Grid.ColumnSpan="2"  >
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Style.Triggers>
+                                            <MultiDataTrigger>
+                                                <Setter Property="FontWeight" Value="ExtraBold" />
+                                                <!--<Setter Property="Foreground" Value="Red" />-->
+                                                <Setter Property="Foreground">
+                                                    <Setter.Value>
+                                                        <MultiBinding Converter="{StaticResource PreviousHighConverter}">
+                                                            <Binding Path="PrvsClsgPric" />
+                                                            <Binding Path="ClsPric" />
+                                                        </MultiBinding>
+                                                    </Setter.Value>
+                                                </Setter>
+                                                <!--<MultiDataTrigger.Conditions>
+                                                    <Condition Value="True">
+                                                        <Condition.Binding>
+                                                            <MultiBinding Converter="{StaticResource PreviousHighConverter}">
+                                                                <Binding Path="PrvsClsgPric" />
+                                                                <Binding Path="ClsPric" />
+                                                            </MultiBinding>
+                                                        </Condition.Binding>
+                                                    </Condition>
+                                                </MultiDataTrigger.Conditions>-->
+                                            </MultiDataTrigger>
+                                            <!--<MultiDataTrigger  Converter={StaticResource ResourceKey=PreviousHighConverter}}" >
+                                                    <Setter Property="FontWeight" Value="ExtraBold" />
+                                                    <Setter Property="Foreground" Value="Red" />
+                                                </MultiDataTrigger>-->
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+
+                            <StackPanel Background="WhiteSmoke"  Grid.Row="1" Grid.Column="0" Width="100" Margin="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                                <TextBlock  HorizontalAlignment="Right" Text="OpnPric:" />
+                                <TextBlock  HorizontalAlignment="Right" Text="HghPric:" />
+                                <TextBlock  HorizontalAlignment="Right" Text="LwPric:" />
+                                <TextBlock  HorizontalAlignment="Right" Text="ClsPric:" />
+                                <TextBlock  HorizontalAlignment="Right" Text="LastPric:" />
+                                <TextBlock  HorizontalAlignment="Right" Text="PrvsClsgPric:" >
+
+                                </TextBlock>
+
+                            </StackPanel>
+                            <StackPanel Background="WhiteSmoke"   Grid.Row="1" Grid.Column="1" Width="80" Margin="0,10,0,10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock  HorizontalAlignment="Left" Text="{Binding OpnPric}" />
+                                <TextBlock  HorizontalAlignment="Left" Text="{Binding HghPric}" />
+                                <TextBlock  HorizontalAlignment="Left" Text="{Binding LwPric}" />
+                                <TextBlock  HorizontalAlignment="Left" Text="{Binding ClsPric}" />
+                                <TextBlock  HorizontalAlignment="Left" Text="{Binding LastPric}" />
+                                <TextBlock  HorizontalAlignment="Left" Text="{Binding PrvsClsgPric}" >
+                                    <!--<TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding  Path=PrvsClsgPric, Converter={StaticResource ResourceKey=PreviousHighConverter}}" Value="true">
+                                                    <Setter Property="FontWeight" Value="ExtraBold" />
+                                                    <Setter Property="Foreground" Value="Red" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>-->
+                                </TextBlock>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</UserControl>

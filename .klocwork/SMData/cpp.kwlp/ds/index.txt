@@ -1,0 +1,4 @@
+C:\Jiya -HP\Dot Net\SMData\SMData\DataReader\05092023.csv;C:\Jiya -HP\Dot Net\SMData\SMData\.klocwork\SMData\cpp.kwlp\ds\1\n2cu1dlg.wnn;1;0;False;9122AB3680CA3B97EBE11A2BD9974D076B6A261E;False
+C:\Jiya -HP\Dot Net\SMData\SMData\MainWindow.xaml;C:\Jiya -HP\Dot Net\SMData\SMData\.klocwork\SMData\cpp.kwlp\ds\2\lz3yrmad.efi;2;0;False;FFF0783FBE18784C1C08984DA5E4482472FF6F9C;False
+C:\Jiya -HP\Dot Net\SMData\SMData\obj\Debug\App.g.cs;C:\Jiya -HP\Dot Net\SMData\SMData\.klocwork\SMData\cpp.kwlp\ds\4\2xfeficd.jlv;4;0;False;B1D6A4366B0BA884C1386E536AEF31C16D716186;False
+C:\Jiya -HP\Dot Net\SMData\SMData\Views\BelowHundered.xaml;C:\Jiya -HP\Dot Net\SMData\SMData\.klocwork\SMData\cpp.kwlp\ds\5\kfc5ri5n.qlf;5;0;False;9EF0239DFB65523D56EE18B00D4BC88FDACEC766;False
