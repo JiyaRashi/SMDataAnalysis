@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ShareMarketData.Model
+﻿namespace ShareMarketData.Model
 {
-    public class QueryResultModel
+    public class StocksResultModel
     {
         public string ISIN { get; set; }
         public string TckrSymb { get; set; }

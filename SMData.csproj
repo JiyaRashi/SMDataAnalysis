@@ -57,7 +57,8 @@
     </ApplicationDefinition>
     <Compile Include="Command\RelayCommand.cs" />
     <Compile Include="Converter\PreviousHighConverter.cs" />
-    <Compile Include="Model\QueryResultModel.cs" />
+    <Compile Include="Logic\DataLogic.cs" />
+    <Compile Include="Model\StocksResultModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="Views\BelowHundered.xaml.cs">
       <DependentUpon>BelowHundered.xaml</DependentUpon>

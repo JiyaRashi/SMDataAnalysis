@@ -9,14 +9,14 @@ namespace ShareMarketData.DataReader
 {
     public static class DataReaderExtension
     {
-        public static IEnumerable<QueryResultModel> ToQueryResult(this IEnumerable<string> source)
+        public static IEnumerable<StocksResultModel> ToQueryResult(this IEnumerable<string> source)
         {
             foreach (var line in source)
             {
 
                 var columns = line.Split(',');
 
-                yield return new QueryResultModel
+                yield return new StocksResultModel
                 {
                     ISIN = columns[0],
                     TckrSymb = columns[1],                    
