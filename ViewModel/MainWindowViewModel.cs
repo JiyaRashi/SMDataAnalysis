@@ -1,4 +1,6 @@
-﻿using ShareMarketData.DataReader;
+﻿using ShareMarketData.Command;
+using ShareMarketData.DataReader;
+using ShareMarketData.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -31,18 +33,14 @@ namespace ShareMarketData.ViewModel
 
         private IList<QueryResultModel> _usersCq;
         private IList<QueryResultModel> _100Price;
-        //private ObservableCollection<QueryResultModel> _500Price;
-        //private ObservableCollection<QueryResultModel> _1000Price;
-        //private ObservableCollection<QueryResultModel> _above1000Price;
+        
         private bool _isSortbyName;
 
         public MainWindowViewModel()
         {
 
             _100Price = GetAllQueryResult().Where(e => e.SctySrs == "EQ" && e.OpnPric <= 100).ToList();
-            //_500Price = GetAllQueryResult().Where(e => e.SctySrs == "EQ" && e.OpnPric >= 101 && e.OpnPric <= 500).ToList();
-            //_1000Price = GetAllQueryResult().Where(e => e.SctySrs == "EQ" && e.OpnPric >= 501 && e.OpnPric <= 1000).ToList();
-            // _above1000Price = GetAllQueryResult().Where(e => e.SctySrs == "EQ" && e.OpnPric >= 10001).ToList();
+           
             LodaSMDataCommand = new RelayCommand(LoadData, CanLoadData);
             IsSortbyNameCommand = new RelayCommand(SortbyName, CanSortbyName);
             DayDiffCommand = new RelayCommand(DayDiff, CanDayDiff);
@@ -128,11 +126,6 @@ namespace ShareMarketData.ViewModel
         }
         private void DayDiff(object obj)
         {
-            //_usersCq = from _userCq in _usersCq
-            //           select new 
-            //           {
-            //               _userCq.dummy =  _userCq.PrvsClsgPric - _userCq.ClsPric
-            //           };
             if (!string.IsNullOrEmpty(SelectedItemFrom) && !string.IsNullOrEmpty(SelectedItemTo))
             {
                 foreach (QueryResultModel _userCq in _usersCq)
@@ -188,34 +181,7 @@ namespace ShareMarketData.ViewModel
             }
         }
 
-        //public IList<QueryResultModel> HunderedPrice
-        //{
-        //    get
-        //    {
-        //        return _100Price;
-        //    }
-        //    set
-        //    {
-        //        _100Price = value;
-        //        this.NotifyPropertyChanged("HunderedPrice");
-        //    }
-        //}
-
-        //public ObservableCollection<QueryResultModel> FiveHunderedPrice
-        //{
-        //    get { return _500Price; }
-        //    set { _500Price = value; }
-        //}
-        //public ObservableCollection<QueryResultModel> ThousandPrice
-        //{
-        //    get { return _1000Price; }
-        //    set { _1000Price = value; }
-        //}
-        //public ObservableCollection<QueryResultModel> AboveThousandPrice
-        //{
-        //    get { return _above1000Price; }
-        //    set { _above1000Price = value; }
-        //}
+        
         private void LoadData(object value)
         {
             if (_valueFrom > 0 && _valueTo > 0)
@@ -224,32 +190,7 @@ namespace ShareMarketData.ViewModel
                 TotoalCount = UsersCq.Count();
             }
                
-            // _isAllSMData = false;
-            // UsersCq.Clear();
-            //if (IsAllSMData)
-            //UsersCq = new ObservableCollection<QueryResultModel>(_100Price);
-            //else
-            //    UsersCq = GetAllQueryResult().Where(e => e.SctySrs == "EQ").ToList();
-            //Application.Current.Dispatcher.Invoke(() =>
-            //{
-            //   // UsersCq.Clear();
-
-            //});
-            //  UsersCq = new ObservableCollection<QueryResultModel>(_100Price);
-
-            //new Thread(() =>
-            //{
-            //    //Dispatcher.CurrentDispatcher.Invoke(new Action(() =>
-            //    //{
-
-            //    //}));
-
-            //    UsersCq.Clear();
-            //    UsersCq = new ObservableCollection<QueryResultModel>(_100Price);
-            //    //System.Windows.Application.Current.Dispatcher.Invoke(delegate {
-
-            //    //});
-            //}).Start();
+           
         }
 
         private bool CanLoadData(object value)
@@ -268,37 +209,7 @@ namespace ShareMarketData.ViewModel
 
 
 
-        // private ICommand mUpdater;
-        //public ICommand UpdateCommand
-        //{
-        //    get
-        //    {
-
-        //             return this.mUpdater;
-        //    }
-        //    set
-        //    {
-        //        mUpdater = value;
-        //    }
-        //}
-        //private bool _below100;
-        //public bool Below100
-        //{
-        //    get { return _below100; }
-        //    set
-        //    {
-
-        //        if (_below100)
-        //        {
-        //            _usersCq.Clear();
-        //            _usersCq = (ObservableCollection<QueryResultModel>)GetAllQueryResult().Where(e => e.SctySrs == "EQ" && e.OpnPric <= 10);
-        //        }
-        //        this.NotifyPropertyChanged("Below100");
-        //        this.NotifyPropertyChanged("UsersCq");
-        //        _below100 = value;
-
-        //    }
-        //}
+       
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void NotifyPropertyChanged(string propertyName)
@@ -309,33 +220,6 @@ namespace ShareMarketData.ViewModel
                 handler(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-        //public ObservableCollection<QueryResultModel> GetAllQueryResultObs()
-        //{
-        //    ObservableCollection<QueryResultModel> SmData = new ObservableCollection<QueryResultModel>();
-        //    IList<QueryResultModel> value= GetAllQueryResult().Where(e => e.SctySrs == "EQ").ToList();
-        //    foreach (var item in value)
-        //    {
-        //        SmData.Add(item);
-        //    }
-        //    return SmData;
-        //}
-
-        //public IList<QueryResultModel> GetAllQueryResult()
-        //{
-
-        //    //string path = $"Data/QueryResult.csv";
-        //    string path = $"DataReader/05092023.csv";
-
-
-        //    var query =
-
-        //        File.ReadAllLines(path)
-        //            .Skip(1)
-        //            .Where(l => l.Length > 1)
-        //            .ToQueryResult();
-
-        //    return query.ToList();
-        //}
 
         public ObservableCollection<QueryResultModel> GetAllQueryResult()
         {
@@ -372,102 +256,11 @@ namespace ShareMarketData.ViewModel
             return importingData;
         }
 
-        //public bool CanExecute(object parameter)
-        //{
-        //    return true;
-        //}
-
-        //public void Execute(object parameter)
-        //{
-        //    if (parameter == null)
-        //    {
-        //        _usersCq.Clear();
-        //        _usersCq = (ObservableCollection<QueryResultModel>)GetAllQueryResult().Where(e => e.SctySrs == "EQ" && e.OpnPric <= 10);
-        //    }
-        //}
-        //public IList<QueryResultModel> GetPreviousDayHigh()
-        //{
-
-        //    foreach (var item in UsersCq)
-        //    {
-
-        //    }
-
-        //}
+       
 
     }
 
-    //public class Updater : ICommand
-    //{
-    //    #region ICommand Members
+   
 
-    //    public bool CanExecute(object parameter)
-    //    {
-
-    //        return true;
-    //    }
-
-    //    public event EventHandler CanExecuteChanged;
-
-    //    public void Execute(object parameter)
-    //    {
-    //        if (parameter == null)
-    //        {
-    //            _usersCq.Clear();
-    //            _usersCq = (ObservableCollection<QueryResultModel>)GetAllQueryResult().Where(e => e.SctySrs == "EQ" && e.OpnPric <= 10);
-    //        }
-
-    //    }
-
-    //    #endregion
-    //}
-
-    public class RelayCommand : ICommand
-    {
-        Action<object> _execute;
-        Func<object, bool> _canExecute;
-        private bool isSortbyName;
-        private Func<object, bool> canSortbyNameCommand;
-
-        public RelayCommand(Action<object> execute, Func<object, bool> canExecute)
-        {
-            _execute = execute;
-            _canExecute = canExecute;
-        }
-
-        public RelayCommand(bool isSortbyName, Func<object, bool> canSortbyNameCommand)
-        {
-            this.isSortbyName = isSortbyName;
-            this.canSortbyNameCommand = canSortbyNameCommand;
-        }
-
-        public bool CanExecute(object parameter)
-        {
-            if (_canExecute != null)
-            {
-                return _canExecute(parameter);
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public event EventHandler CanExecuteChanged
-        {
-            add
-            {
-                CommandManager.RequerySuggested += value;
-            }
-            remove
-            {
-                CommandManager.RequerySuggested -= value;
-            }
-        }
-
-        public void Execute(object parameter)
-        {
-            _execute(parameter);
-        }
-    }
+  
 }

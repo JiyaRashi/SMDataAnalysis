@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShareMarketData.Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace ShareMarketData.DataReader
 
             return query.ToList();
         }
-    }
 
-    
+    }
+       
 }
