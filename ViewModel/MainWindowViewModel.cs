@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 
 
@@ -25,6 +26,8 @@ namespace ShareMarketData.ViewModel
 
         public ICommand CheckCommand { get; set; }
 
+        public ICommand AddtoDB { get; set; }
+
         private IList<StocksResultModel> _stocksList;
 
         public DataLogic dataLogic { get; set; }
@@ -38,7 +41,7 @@ namespace ShareMarketData.ViewModel
             LodaSMDataCommand = new RelayCommand(LoadData, CanLoadData);
             IsSortbyNameCommand = new RelayCommand(SortbyName, CanSortbyName);
             DayDiffCommand = new RelayCommand(DayDiff, CanDayDiff);
-
+            AddtoDB = new RelayCommand(Addtodb, IsDb);
             _stocksList = dataLogic.GetAllStockResult().Where(e => e.SctySrs == "EQ").ToList();
             _totoalCount = _stocksList.Count();
             CompareItemFrom = dataLogic.GetCompareItem();
@@ -119,6 +122,17 @@ namespace ShareMarketData.ViewModel
                 UsersCq = _stocksList.OrderBy(x => x.dummy).ToList();
             }
         }
+        private void Addtodb(object obj)
+        {
+            dataLogic.AddStocksFromcsv(dataLogic.GetAllStockResult().Where(e => e.SctySrs == "EQ").ToList());
+            MessageBox.Show("Data Added Successfully");
+        }
+
+        private bool IsDb(object arg)
+        {
+            return true;
+        }
+
 
         private void SortbyName(object obj)
         {

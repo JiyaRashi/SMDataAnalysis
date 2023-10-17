@@ -35,8 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -57,6 +66,24 @@
     </ApplicationDefinition>
     <Compile Include="Command\RelayCommand.cs" />
     <Compile Include="Converter\PreviousHighConverter.cs" />
+    <Compile Include="Entityframework\NSEStock.cs">
+      <DependentUpon>SMDataAnalysis.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entityframework\SMDataAnalysis.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SMDataAnalysis.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entityframework\SMDataAnalysis.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SMDataAnalysis.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entityframework\SMDataAnalysis.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SMDataAnalysis.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Logic\DataLogic.cs" />
     <Compile Include="Model\StocksResultModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
@@ -115,6 +142,14 @@
     <None Include="DataReader\31082023.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <EntityDeploy Include="Entityframework\SMDataAnalysis.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SMDataAnalysis.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Entityframework\SMDataAnalysis.edmx.diagram">
+      <DependentUpon>SMDataAnalysis.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -122,6 +157,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Entityframework\SMDataAnalysis.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SMDataAnalysis.Context.cs</LastGenOutput>
+      <DependentUpon>SMDataAnalysis.edmx</DependentUpon>
+    </Content>
+    <Content Include="Entityframework\SMDataAnalysis.edmx.sql" />
+    <Content Include="Entityframework\SMDataAnalysis.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SMDataAnalysis.edmx</DependentUpon>
+      <LastGenOutput>SMDataAnalysis.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

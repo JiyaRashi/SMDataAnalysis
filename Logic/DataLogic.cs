@@ -1,4 +1,5 @@
-﻿using ShareMarketData.Model;
+﻿using ShareMarketData.Entityframework;
+using ShareMarketData.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -58,5 +59,43 @@ namespace ShareMarketData.Logic
             return items;
 
         }
+
+
+
+
+        public void AddStocksFromcsv(List<StocksResultModel> qrmodel)
+        {
+            using (SME_DATAEntities SMDataEnities = new SME_DATAEntities())
+            {
+                foreach (var item in qrmodel)
+                {
+                    NSEStock NseStocks = new NSEStock()
+                    {
+                        ISIN = item.ISIN,
+                        TckrSymb = item.TckrSymb,
+                        SctySrs = item.SctySrs,
+                        OpenPrice = item.OpnPric,
+                        HighPrice = item.HghPric,
+                        LowPrice = item.LwPric,
+                        ClosePrice = item.ClsPric,
+                        LastPrice = item.LastPric,
+                        PrviousClosePrice = item.PrvsClsgPric,
+                        TtlTradgVol = item.TtlTradgVol,
+                        TradDt = item.TradDt,
+                        TtlNbOfTxsExctd = item.TtlNbOfTxsExctd.ToString(),
+                    };
+
+                    List<NSEStock> _nSEStocks = SMDataEnities.NSEStocks.ToList();
+                    if (!_nSEStocks.Contains(NseStocks))
+                    {
+                        SMDataEnities.NSEStocks.Add(NseStocks);
+                        SMDataEnities.SaveChanges();
+                    }
+                }
+
+            }
+        }
+
+
     }
 }

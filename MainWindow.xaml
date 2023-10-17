@@ -63,7 +63,7 @@
             <TextBlock  Margin="5,0,0,0" Text="{Binding TotoalCount, UpdateSourceTrigger=PropertyChanged}" />
             <CheckBox  Command="{Binding IsSortbyNameCommand}" IsChecked="{Binding IsSortbyName, UpdateSourceTrigger=PropertyChanged}"  Content="SortByName"/>
             <CheckBox  Command="{Binding DayDiffCommand}" IsChecked="{Binding IsDayDiff, UpdateSourceTrigger=PropertyChanged}"  Content="Day %"/>
-            
+            <Button Content="Add to DB" Width="100" Command="{Binding Path=AddtoDB, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Margin="5,0,0,0" />
         </StackPanel>
         <StackPanel Margin="10,10" Grid.Row="1" Orientation="Horizontal"  >
             <ComboBox SelectedIndex="0"  SelectedValue="{Binding SelectedItemFrom, Mode=TwoWay}"  ItemsSource="{Binding CompareItemFrom, UpdateSourceTrigger=PropertyChanged}" Margin="5,0,0,0" />
