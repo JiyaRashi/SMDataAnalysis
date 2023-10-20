@@ -28,7 +28,7 @@ namespace ShareMarketData.ViewModel
 
         public ICommand AddtoDB { get; set; }
 
-        private IList<StocksResultModel> _stocksList;
+        private IList<StocksResultModel> csvdailystocksList;
 
         public DataLogic dataLogic { get; set; }
 
@@ -42,8 +42,8 @@ namespace ShareMarketData.ViewModel
             IsSortbyNameCommand = new RelayCommand(SortbyName, CanSortbyName);
             DayDiffCommand = new RelayCommand(DayDiff, CanDayDiff);
             AddtoDB = new RelayCommand(Addtodb, IsDb);
-            _stocksList = dataLogic.GetAllStockResult().Where(e => e.SctySrs == "EQ").ToList();
-            _totoalCount = _stocksList.Count();
+            csvdailystocksList = dataLogic.GetAllStockResult().Where(e => e.SctySrs == "EQ").ToList();
+            _totoalCount = csvdailystocksList.Count();
             CompareItemFrom = dataLogic.GetCompareItem();
             CompareItemTo = dataLogic.GetCompareItem();
         }
@@ -114,17 +114,22 @@ namespace ShareMarketData.ViewModel
         {
             if (!string.IsNullOrEmpty(SelectedItemFrom) && !string.IsNullOrEmpty(SelectedItemTo))
             {
-                foreach (StocksResultModel _userCq in _stocksList)
+                foreach (StocksResultModel _userCq in csvdailystocksList)
                 {
                     _userCq.dummy = _userCq.PrvsClsgPric - _userCq.ClsPric;
                 }
 
-                UsersCq = _stocksList.OrderBy(x => x.dummy).ToList();
+                UsersCq = csvdailystocksList.OrderBy(x => x.dummy).ToList();
             }
         }
         private void Addtodb(object obj)
         {
-            dataLogic.AddStocksFromcsv(dataLogic.GetAllStockResult().Where(e => e.SctySrs == "EQ").ToList());
+           // dataLogic.AddStocksFromcsv(dataLogic.GetAllStockResult().Where(e => e.SctySrs == "EQ").ToList());
+           // dataLogic.UpdateStocksName(dataLogic.GetAllStockResult().Where(e => e.SctySrs == "EQ").ToList());
+           // dataLogic.UpdateDailyStockPrice(dataLogic.GetAllStockResult().Where(e => e.SctySrs == "EQ").ToList());
+            dataLogic.GetStockPrice();
+
+            // dataLogic.UpdateDailyStockPrice(List < StocksResultModel > qrmodel)
             MessageBox.Show("Data Added Successfully");
         }
 
@@ -138,7 +143,7 @@ namespace ShareMarketData.ViewModel
         {
             if (_isSortbyName) UsersCq.OrderBy(x => x.TckrSymb);
             else
-                UsersCq = _stocksList;
+                UsersCq = csvdailystocksList;
         }
 
         private bool CanSortbyName(object arg)
@@ -169,11 +174,11 @@ namespace ShareMarketData.ViewModel
         {
             get
             {
-                return _stocksList;
+                return csvdailystocksList;
             }
             set
             {
-                _stocksList = value;
+                csvdailystocksList = value;
                 this.NotifyPropertyChanged("UsersCq");
             }
         }

@@ -1,4 +1,4 @@
-C:\Jiya -HP\Dot Net\SMData\SMData\ViewModel\MainWindowViewModel.cs;C:\Jiya -HP\Dot Net\SMData\SMData\.klocwork\SMData\cs.kwlp\ds\8\mryirnzk.1zw;8;0;False;33ADF8331444A18E12FA06FDD5B5ED8B56E7E616;False
+C:\Jiya -HP\Dot Net\SMData\SMData\ViewModel\MainWindowViewModel.cs;C:\Jiya -HP\Dot Net\SMData\SMData\.klocwork\SMData\cs.kwlp\ds\8\mryirnzk.1zw;8;0;False;D1F195ADF83D0D5F3BAF73C9487A5F52C09F1272;False
 C:\Jiya -HP\Dot Net\SMData\SMData\App.xaml.cs;C:\Jiya -HP\Dot Net\SMData\SMData\.klocwork\SMData\cs.kwlp\ds\9\d40rhqao.1c3;9;0;False;C844D36D52AFDA681BA7A098FCEF20AC023DE08D;False
 C:\Jiya -HP\Dot Net\SMData\SMData\DataReader\DataReader.cs;C:\Jiya -HP\Dot Net\SMData\SMData\.klocwork\SMData\cs.kwlp\ds\0\pbfeyjwd.wyd;10;0;False;15B8800897FE4741EFED40F873D292EE6BEE8A6E;False
 C:\Jiya -HP\Dot Net\SMData\SMData\DataReader\DataReaderExtension.cs;C:\Jiya -HP\Dot Net\SMData\SMData\.klocwork\SMData\cs.kwlp\ds\1\dgw2mdsj.krf;11;0;False;5BEA8C7E87B7EFBD716B111EC49A9F80E37C06D3;False
@@ -6,12 +6,14 @@ C:\Jiya -HP\Dot Net\SMData\SMData\MainWindow.xaml.cs;C:\Jiya -HP\Dot Net\SMData\
 C:\Jiya -HP\Dot Net\SMData\SMData\Converter\PreviousHighConverter.cs;C:\Jiya -HP\Dot Net\SMData\SMData\.klocwork\SMData\cs.kwlp\ds\6\10a1hh5i.1dj;16;0;False;00E80FAE237CF67B70A689D6F76724BF77CA1EF4;False
 C:\Jiya -HP\Dot Net\SMData\SMData\Command\RelayCommand.cs;C:\Jiya -HP\Dot Net\SMData\SMData\.klocwork\SMData\cs.kwlp\ds\1\rjeo2f5s.d21;21;0;False;2C8255786F0294CEA4276945D2BE732C5E90812E;False
 C:\Jiya -HP\Dot Net\SMData\SMData\Model\StocksResultModel.cs;C:\Jiya -HP\Dot Net\SMData\SMData\.klocwork\SMData\cs.kwlp\ds\3\bcqmyx30.4f0;23;0;False;593FFD06BECAC08B682AFFAB9186518FBB07607B;False
-C:\Jiya -HP\Dot Net\SMData\SMData\Logic\DataLogic.cs;C:\Jiya -HP\Dot Net\SMData\SMData\.klocwork\SMData\cs.kwlp\ds\4\srue0rzv.zj4;24;0;False;054557C6391CB50E60D67A1523955D3FEED7CE60;False
-C:\Jiya -HP\Dot Net\SMData\SMData\Properties\AssemblyInfo.cs;;25;0;False;BEF89438EFBF26E1875CC250BC895847678A0C6F;False
-C:\Jiya -HP\Dot Net\SMData\SMData\Properties\Resources.Designer.cs;;26;0;False;4CB082C59346D1348E94D4EA786321FF61E2FEC3;False
-C:\Jiya -HP\Dot Net\SMData\SMData\Properties\Settings.Designer.cs;;27;0;False;F662193784C232DBA2CF89FF61237257E679DC72;False
-C:\Jiya -HP\Dot Net\SMData\SMData\Views\BelowHundered.xaml.cs;;28;0;False;669B7848B14DD24DE463F59DCA12BD3FF821361C;False
-C:\Jiya -HP\Dot Net\SMData\SMData\Entityframework\SMDataAnalysis.Designer.cs;;29;0;False;7D25E4799FD883E5AC41DB65B62349F7D585CBE4;False
-C:\Jiya -HP\Dot Net\SMData\SMData\Entityframework\SMDataAnalysis.Context.cs;;30;0;False;75B49FC8391BB91C6A0DF22E37D9952DD056E873;False
-C:\Jiya -HP\Dot Net\SMData\SMData\Entityframework\NSEStock.cs;;31;0;False;B37A915FD0442751528F5D8517D1A7588E2E2C59;False
-C:\Jiya -HP\Dot Net\SMData\SMData\Entityframework\SMDataAnalysis.cs;;32;0;False;05FD7BBD66921526B9A364090D07AA70380556EE;False
+C:\Jiya -HP\Dot Net\SMData\SMData\Logic\DataLogic.cs;C:\Jiya -HP\Dot Net\SMData\SMData\.klocwork\SMData\cs.kwlp\ds\4\srue0rzv.zj4;24;0;False;D42746F112C459FF2E4025530BB3EE2A97A72E0C;False
+C:\Jiya -HP\Dot Net\SMData\SMData\Entityframework\NSEStock.cs;C:\Jiya -HP\Dot Net\SMData\SMData\.klocwork\SMData\cs.kwlp\ds\5\xihm1tnz.ghb;25;0;False;49D692C01C6BD2B7C8071222EC0FE87D5D554EE2;False
+C:\Jiya -HP\Dot Net\SMData\SMData\Entityframework\SMDataAnalysis.Context.cs;;26;0;False;75B49FC8391BB91C6A0DF22E37D9952DD056E873;False
+C:\Jiya -HP\Dot Net\SMData\SMData\Entityframework\SMDataAnalysis.Designer.cs;;27;0;False;0D7C18D6250808C643F751A765577372AC846A57;False
+C:\Jiya -HP\Dot Net\SMData\SMData\Entityframework\SMDataAnalysis.cs;C:\Jiya -HP\Dot Net\SMData\SMData\.klocwork\SMData\cs.kwlp\ds\8\mirsli1m.5og;28;0;False;05FD7BBD66921526B9A364090D07AA70380556EE;False
+C:\Jiya -HP\Dot Net\SMData\SMData\Properties\AssemblyInfo.cs;;29;0;False;BEF89438EFBF26E1875CC250BC895847678A0C6F;False
+C:\Jiya -HP\Dot Net\SMData\SMData\Properties\Resources.Designer.cs;;30;0;False;4CB082C59346D1348E94D4EA786321FF61E2FEC3;False
+C:\Jiya -HP\Dot Net\SMData\SMData\Properties\Settings.Designer.cs;;31;0;False;F662193784C232DBA2CF89FF61237257E679DC72;False
+C:\Jiya -HP\Dot Net\SMData\SMData\Views\BelowHundered.xaml.cs;;32;0;False;669B7848B14DD24DE463F59DCA12BD3FF821361C;False
+C:\Jiya -HP\Dot Net\SMData\SMData\Entityframework\StockName.cs;;33;0;False;A3EC3419DD8DA46180493D3D14DA25804BD65630;False
+C:\Jiya -HP\Dot Net\SMData\SMData\Entityframework\Stock_Names.cs;;34;0;False;155F511AF1C0593C2F70DD06C14D4746A52CA368;False

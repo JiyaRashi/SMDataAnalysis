@@ -13,10 +13,10 @@ namespace ShareMarketData.Entityframework
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SME_DATAEntities : DbContext
+    public partial class SME_DATAEntities1 : DbContext
     {
-        public SME_DATAEntities()
-            : base("name=SME_DATAEntities")
+        public SME_DATAEntities1()
+            : base("name=SME_DATAEntities1")
         {
         }
     
@@ -25,6 +25,7 @@ namespace ShareMarketData.Entityframework
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<NSEStock> NSEStocks { get; set; }
+        public virtual DbSet<Stock_Names> Stock_Names { get; set; }
+        public virtual DbSet<StockPrice> StockPrices { get; set; }
     }
 }

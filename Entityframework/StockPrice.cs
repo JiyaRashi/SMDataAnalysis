@@ -12,11 +12,10 @@ namespace ShareMarketData.Entityframework
     using System;
     using System.Collections.Generic;
     
-    public partial class NSEStock
+    public partial class StockPrice
     {
         public int Id { get; set; }
         public string ISIN { get; set; }
-        public string TckrSymb { get; set; }
         public string SctySrs { get; set; }
         public Nullable<decimal> OpenPrice { get; set; }
         public Nullable<decimal> HighPrice { get; set; }
@@ -27,5 +26,8 @@ namespace ShareMarketData.Entityframework
         public Nullable<int> TtlTradgVol { get; set; }
         public string TradDt { get; set; }
         public string TtlNbOfTxsExctd { get; set; }
+        public int Stock_NameId { get; set; }
+    
+        public virtual Stock_Names Stock_Names { get; set; }
     }
 }

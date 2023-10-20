@@ -66,23 +66,26 @@
     </ApplicationDefinition>
     <Compile Include="Command\RelayCommand.cs" />
     <Compile Include="Converter\PreviousHighConverter.cs" />
-    <Compile Include="Entityframework\NSEStock.cs">
-      <DependentUpon>SMDataAnalysis.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entityframework\SMDataAnalysis.Context.cs">
+    <Compile Include="Entityframework\SME_DaliyData.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SMDataAnalysis.Context.tt</DependentUpon>
+      <DependentUpon>SME_DaliyData.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entityframework\SMDataAnalysis.cs">
+    <Compile Include="Entityframework\SME_DaliyData.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SMDataAnalysis.tt</DependentUpon>
+      <DependentUpon>SME_DaliyData.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entityframework\SMDataAnalysis.Designer.cs">
+    <Compile Include="Entityframework\SME_DaliyData.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SMDataAnalysis.edmx</DependentUpon>
+      <DependentUpon>SME_DaliyData.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entityframework\StockPrice.cs">
+      <DependentUpon>SME_DaliyData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entityframework\Stock_Names.cs">
+      <DependentUpon>SME_DaliyData.tt</DependentUpon>
     </Compile>
     <Compile Include="Logic\DataLogic.cs" />
     <Compile Include="Model\StocksResultModel.cs" />
@@ -142,12 +145,12 @@
     <None Include="DataReader\31082023.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <EntityDeploy Include="Entityframework\SMDataAnalysis.edmx">
+    <EntityDeploy Include="Entityframework\SME_DaliyData.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SMDataAnalysis.Designer.cs</LastGenOutput>
+      <LastGenOutput>SME_DaliyData.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Entityframework\SMDataAnalysis.edmx.diagram">
-      <DependentUpon>SMDataAnalysis.edmx</DependentUpon>
+    <None Include="Entityframework\SME_DaliyData.edmx.diagram">
+      <DependentUpon>SME_DaliyData.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -159,20 +162,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Entityframework\SMDataAnalysis.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>SMDataAnalysis.Context.cs</LastGenOutput>
-      <DependentUpon>SMDataAnalysis.edmx</DependentUpon>
-    </Content>
-    <Content Include="Entityframework\SMDataAnalysis.edmx.sql" />
-    <Content Include="Entityframework\SMDataAnalysis.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SMDataAnalysis.edmx</DependentUpon>
-      <LastGenOutput>SMDataAnalysis.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="Entityframework\SME_DaliyData.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SME_DaliyData.edmx</DependentUpon>
+      <LastGenOutput>SME_DaliyData.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entityframework\SME_DaliyData.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SME_DaliyData.edmx</DependentUpon>
+      <LastGenOutput>SME_DaliyData.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace ShareMarketData.Logic
 {
-   public class DataLogic
+    public class DataLogic
     {
         public ObservableCollection<StocksResultModel> GetAllStockResult()
         {
-            string path = $"DataReader/09092023.csv";
+            string path = $"DataReader/06092023.csv";
             StreamReader sr = new StreamReader(path);
             ObservableCollection<StocksResultModel> importingData = new ObservableCollection<StocksResultModel>();
 
@@ -63,35 +63,132 @@ namespace ShareMarketData.Logic
 
 
 
-        public void AddStocksFromcsv(List<StocksResultModel> qrmodel)
+        //public void AddStocksFromcsv(List<StocksResultModel> qrmodel)
+        //{
+        //    using (SME_DATAEntities1 SMDataEnities = new SME_DATAEntities1())
+        //    {
+        //        foreach (var item in qrmodel)
+        //        {
+        //            NSEStock NseStocks = new NSEStock()
+        //            {
+        //                ISIN = item.ISIN,
+        //                TckrSymb = item.TckrSymb,
+        //                SctySrs = item.SctySrs,
+        //                OpenPrice = item.OpnPric,
+        //                HighPrice = item.HghPric,
+        //                LowPrice = item.LwPric,
+        //                ClosePrice = item.ClsPric,
+        //                LastPrice = item.LastPric,
+        //                PrviousClosePrice = item.PrvsClsgPric,
+        //                TtlTradgVol = item.TtlTradgVol,
+        //                TradDt = item.TradDt,
+        //                TtlNbOfTxsExctd = item.TtlNbOfTxsExctd.ToString(),
+        //            };
+
+        //            List<NSEStock> _nSEStocks = SMDataEnities.NSEStocks.ToList();
+        //            if (!_nSEStocks.Contains(NseStocks))
+        //            {
+        //                SMDataEnities.NSEStocks.Add(NseStocks);
+        //                SMDataEnities.SaveChanges();
+        //            }
+        //        }
+
+        //    }
+        //}
+
+        public void UpdateStocksName(List<StocksResultModel> qrmodel)
         {
-            using (SME_DATAEntities SMDataEnities = new SME_DATAEntities())
+            //ObservableCollection<StocksResultModel> stocksReport = new ObservableCollection<StocksResultModel>();
+            using (SME_DATAEntities1 SMDataEnities = new SME_DATAEntities1())
             {
                 foreach (var item in qrmodel)
                 {
-                    NSEStock NseStocks = new NSEStock()
+                    Stock_Names stockName = new Stock_Names()
                     {
                         ISIN = item.ISIN,
-                        TckrSymb = item.TckrSymb,
-                        SctySrs = item.SctySrs,
-                        OpenPrice = item.OpnPric,
-                        HighPrice = item.HghPric,
-                        LowPrice = item.LwPric,
-                        ClosePrice = item.ClsPric,
-                        LastPrice = item.LastPric,
-                        PrviousClosePrice = item.PrvsClsgPric,
-                        TtlTradgVol = item.TtlTradgVol,
-                        TradDt = item.TradDt,
-                        TtlNbOfTxsExctd = item.TtlNbOfTxsExctd.ToString(),
+                        SName = item.TckrSymb
                     };
 
-                    List<NSEStock> _nSEStocks = SMDataEnities.NSEStocks.ToList();
-                    if (!_nSEStocks.Contains(NseStocks))
+                    List<Stock_Names> _stockname = SMDataEnities.Stock_Names.ToList();
+                    if (!_stockname.Contains(stockName))
                     {
-                        SMDataEnities.NSEStocks.Add(NseStocks);
+                        SMDataEnities.Stock_Names.Add(stockName);
                         SMDataEnities.SaveChanges();
                     }
                 }
+
+
+            }
+
+            // return stocksReport;
+        }
+
+
+        public void UpdateDailyStockPrice(List<StocksResultModel> qrmodel)
+        {
+            using (SME_DATAEntities1 SMDataEnities = new SME_DATAEntities1())
+            {
+                foreach (var item in qrmodel)
+                {
+                    //Master NSE Stocks name List in the database
+                    List<Stock_Names> _stocknames = SMDataEnities.Stock_Names.ToList();
+                    Stock_Names stocknames = _stocknames.Where(X => X.ISIN == item.ISIN).FirstOrDefault();
+                    if (stocknames != null)
+                    {
+                        StockPrice dailyStockPrice = new StockPrice()
+                        {
+                            ISIN = item.ISIN,
+                            SctySrs = item.SctySrs,
+                            OpenPrice = item.OpnPric,
+                            HighPrice = item.HghPric,
+                            LowPrice = item.LwPric,
+                            ClosePrice = item.ClsPric,
+                            LastPrice = item.LastPric,
+                            PrviousClosePrice = item.PrvsClsgPric,
+                            TtlTradgVol = item.TtlTradgVol,
+                            TradDt = item.TradDt,
+                            TtlNbOfTxsExctd = item.TtlNbOfTxsExctd.ToString(),
+                            Stock_NameId = stocknames.ID,
+                        };
+                        List<StockPrice> stockPrices = SMDataEnities.StockPrices.ToList();
+
+                        StockPrice datesAdded = stockPrices.Where(x => x.TradDt == item.TradDt && x.ISIN==item.ISIN).FirstOrDefault();
+                       // if (datesAdded)  Messagebox.show()
+                        if (dailyStockPrice != null && datesAdded ==null)
+                        {
+                            SMDataEnities.StockPrices.Add(dailyStockPrice);
+                            SMDataEnities.SaveChanges();
+                        }
+                    }
+
+                }
+            }
+
+
+        }
+
+        public void GetStockPrice()
+        {
+            using (SME_DATAEntities1 SMDataEnities = new SME_DATAEntities1())
+            {
+                List<Stock_Names> _stocknames = SMDataEnities.Stock_Names.ToList();
+                List<StockPrice> stockPrices = SMDataEnities.StockPrices.ToList();
+
+                var namePrice1 = (from snmae in _stocknames
+                                 join sprice in stockPrices on snmae.ID equals sprice.Stock_NameId
+                                 select new
+                                 {
+                                     snmae.SName,
+                                     sprice.TradDt
+
+                                 }).ToList();
+                var namePrice2 = _stocknames.GroupJoin(stockPrices,
+                      sname => sname.ID, sprice => sprice.Stock_NameId,
+                      (sname, group) => new
+                      {
+                          sname.SName,
+                          sname.StockPrices
+                      });
 
             }
         }

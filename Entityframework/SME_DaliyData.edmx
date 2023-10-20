@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SME_DATAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Stock_Names">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ISIN" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StockPrices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ISIN" Type="varchar" MaxLength="255" />
+          <Property Name="SctySrs" Type="varchar" MaxLength="255" />
+          <Property Name="OpenPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="HighPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="LowPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ClosePrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="LastPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PrviousClosePrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TtlTradgVol" Type="int" />
+          <Property Name="TradDt" Type="varchar" MaxLength="255" />
+          <Property Name="TtlNbOfTxsExctd" Type="varchar" MaxLength="255" />
+          <Property Name="Stock_NameId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__StockPric__Stock__02084FDA">
+          <End Role="Stock_Names" Type="Self.Stock_Names" Multiplicity="1" />
+          <End Role="StockPrices" Type="Self.StockPrices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stock_Names">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StockPrices">
+              <PropertyRef Name="Stock_NameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SME_DATAModelStoreContainer">
+          <EntitySet Name="Stock_Names" EntityType="Self.Stock_Names" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StockPrices" EntityType="Self.StockPrices" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__StockPric__Stock__02084FDA" Association="Self.FK__StockPric__Stock__02084FDA">
+            <End Role="Stock_Names" EntitySet="Stock_Names" />
+            <End Role="StockPrices" EntitySet="StockPrices" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SME_DATAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Stock_Names">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ISIN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="StockPrices" Relationship="Self.FK__StockPric__Stock__02084FDA" FromRole="Stock_Names" ToRole="StockPrices" />
+        </EntityType>
+        <EntityType Name="StockPrice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ISIN" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SctySrs" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OpenPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="HighPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="LowPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ClosePrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="LastPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PrviousClosePrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TtlTradgVol" Type="Int32" />
+          <Property Name="TradDt" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TtlNbOfTxsExctd" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Stock_NameId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Stock_Names" Relationship="Self.FK__StockPric__Stock__02084FDA" FromRole="StockPrices" ToRole="Stock_Names" />
+        </EntityType>
+        <Association Name="FK__StockPric__Stock__02084FDA">
+          <End Role="Stock_Names" Type="Self.Stock_Names" Multiplicity="1" />
+          <End Role="StockPrices" Type="Self.StockPrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stock_Names">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StockPrices">
+              <PropertyRef Name="Stock_NameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SME_DATAEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Stock_Names" EntityType="Self.Stock_Names" />
+          <EntitySet Name="StockPrices" EntityType="Self.StockPrice" />
+          <AssociationSet Name="FK__StockPric__Stock__02084FDA" Association="Self.FK__StockPric__Stock__02084FDA">
+            <End Role="Stock_Names" EntitySet="Stock_Names" />
+            <End Role="StockPrices" EntitySet="StockPrices" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SME_DATAModelStoreContainer" CdmEntityContainer="SME_DATAEntities1">
+          <EntitySetMapping Name="Stock_Names">
+            <EntityTypeMapping TypeName="SME_DATAModel.Stock_Names">
+              <MappingFragment StoreEntitySet="Stock_Names">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SName" ColumnName="SName" />
+                <ScalarProperty Name="ISIN" ColumnName="ISIN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockPrices">
+            <EntityTypeMapping TypeName="SME_DATAModel.StockPrice">
+              <MappingFragment StoreEntitySet="StockPrices">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ISIN" ColumnName="ISIN" />
+                <ScalarProperty Name="SctySrs" ColumnName="SctySrs" />
+                <ScalarProperty Name="OpenPrice" ColumnName="OpenPrice" />
+                <ScalarProperty Name="HighPrice" ColumnName="HighPrice" />
+                <ScalarProperty Name="LowPrice" ColumnName="LowPrice" />
+                <ScalarProperty Name="ClosePrice" ColumnName="ClosePrice" />
+                <ScalarProperty Name="LastPrice" ColumnName="LastPrice" />
+                <ScalarProperty Name="PrviousClosePrice" ColumnName="PrviousClosePrice" />
+                <ScalarProperty Name="TtlTradgVol" ColumnName="TtlTradgVol" />
+                <ScalarProperty Name="TradDt" ColumnName="TradDt" />
+                <ScalarProperty Name="TtlNbOfTxsExctd" ColumnName="TtlNbOfTxsExctd" />
+                <ScalarProperty Name="Stock_NameId" ColumnName="Stock_NameId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
